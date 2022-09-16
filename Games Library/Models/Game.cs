@@ -21,9 +21,6 @@ namespace Games_Library.Models
         public string Publisher { get; set; }
         public string Img { get; set; }
 
-        [Required]
-        public int Year { get; set; }
-
         [Required(ErrorMessage = "Price is required")]
         [DataType(DataType.Currency)]
         public float Price { get; set; }

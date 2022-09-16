@@ -15,7 +15,10 @@ namespace Games_Library.Models
         [MinLength(3, ErrorMessage = "Nickname must be more than 3 letters")]
         public string? Nickname { get; set; }
 
+        [Required]
         public string Gender { get; set; }
+
+        public string Avatar { get; set; } //profile picture
 
         [Required(ErrorMessage = "Email is required")]
         [DataType(DataType.EmailAddress)]
@@ -40,6 +43,7 @@ namespace Games_Library.Models
         public string? PhoneNumber { get; set; }
         public bool IsActive { get; set; } = false;
         public List<User>? Friends { get; set; }
+
 
         //Navigation properties
         [ForeignKey("Games")]
