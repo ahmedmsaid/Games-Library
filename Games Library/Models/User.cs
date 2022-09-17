@@ -15,12 +15,13 @@ namespace Games_Library.Models
         [MinLength(3, ErrorMessage = "Nickname must be more than 3 letters")]
         public string? Nickname { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "*")]
         public string Gender { get; set; }
 
-        public string Avatar { get; set; } //profile picture
+        //profile picture
+        public string Avatar { get; set; } = @"/img/avatar.jpg";
 
-        [Required(ErrorMessage = "Email is required")]
+        [Required(ErrorMessage = "*")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -32,7 +33,7 @@ namespace Games_Library.Models
         [Compare("Password", ErrorMessage = "password does not match")]
         public string ConfirmPassword { get; set; }
 
-        [Required(ErrorMessage = "Country is required")]
+        [Required(ErrorMessage = "*")]
         public string Country { get; set; }
 
         [Required]
@@ -43,14 +44,18 @@ namespace Games_Library.Models
         public string? PhoneNumber { get; set; }
         public bool IsActive { get; set; } = false;
         public List<User>? Friends { get; set; }
+        public List<User>? PendingFriends { get; set; }
 
-
-        //Navigation properties
+        //foreign keys
         [ForeignKey("Games")]
         public int? GameId { get; set; }
-        public List<Game>? Games { get; set; }
 
-        //reviews
+        [ForeignKey("Reviews")]
+        public int? ReviewId { get; set; }
+
+        //Navigation properties
+        public List<Game>? Games { get; set; }
+        public List<Review>? Reviews { get; set; }
 
     }
 }

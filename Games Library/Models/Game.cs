@@ -31,13 +31,19 @@ namespace Games_Library.Models
         [Required(ErrorMessage = "Release date is required")]
         public DateOnly ReleaseDate { get; set; }
 
+        public SysReq SysReq { get; set; }
+
+        //foreign keys
         [ForeignKey("Players")]
         public int? UserId { get; set; }
+
+        [ForeignKey("Reviews")]
+        public int? ReviewId { get; set; }
 
         //Navigation Properties
         public List<User>? Players { get; set; }
 
-        //review
-        //system req
+        public List<Review>? Reviews { get; set; }
+
     }
 }
