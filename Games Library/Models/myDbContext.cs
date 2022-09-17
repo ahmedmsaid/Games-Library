@@ -7,7 +7,7 @@ namespace Games_Library.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<SysReq> SysReqs { get; set; }
+        //public DbSet<SysReq> SysReqs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -17,6 +17,11 @@ namespace Games_Library.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasIndex(e => e.Email).IsUnique();
+            //modelBuilder.Entity<SysReq>().HasNoKey();
+            modelBuilder.Entity<Game>()
+                        .HasOne(a => a.SysReq)
+                        .WithOne(b => b.Game)
+                        .HasForeignKey<SysReq>(b => b.GameId);
             base.OnModelCreating(modelBuilder);
         }
 

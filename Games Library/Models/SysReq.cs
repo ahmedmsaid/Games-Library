@@ -4,7 +4,10 @@ namespace Games_Library.Models
 {
     public class SysReq
     {
-        [ForeignKey("GameId")]
+        [Key]
+        public int Id { get; set; }
+
+        [ForeignKey("Game")]
         public int GameId { get; set; }
         public string OS { get; set; }
         public string Processor { get; set; }
@@ -12,5 +15,9 @@ namespace Games_Library.Models
         public string Memory { get; set; }
         public string DirectX { get; set; }
         public string Storage { get; set; }
+
+        //navigation properties
+
+        public Game Game { get; set; }
     }
 }

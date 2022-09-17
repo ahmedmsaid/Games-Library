@@ -29,18 +29,21 @@ namespace Games_Library.Models
         public float Rate { get; set; }
 
         [Required(ErrorMessage = "Release date is required")]
-        public DateOnly ReleaseDate { get; set; }
-
-        public SysReq SysReq { get; set; }
+        public string ReleaseDate { get; set; }
 
         //foreign keys
         [ForeignKey("Players")]
         public int? UserId { get; set; }
 
-        [ForeignKey("Reviews")]
+        [ForeignKey("Review")]
         public int? ReviewId { get; set; }
 
+        [ForeignKey("SysReq")]
+        public int? SysReqId { get; set; }
+
         //Navigation Properties
+        public SysReq? SysReq { get; set; }
+
         public List<User>? Players { get; set; }
 
         public List<Review>? Reviews { get; set; }

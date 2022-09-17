@@ -50,7 +50,7 @@ namespace Games_Library.Models
         [ForeignKey("Games")]
         public int? GameId { get; set; }
 
-        [ForeignKey("Reviews")]
+        [ForeignKey("Review")]
         public int? ReviewId { get; set; }
 
         //Navigation properties
