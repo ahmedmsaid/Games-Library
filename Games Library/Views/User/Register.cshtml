@@ -1,0 +1,87 @@
+﻿@model User
+@{
+    Layout = "_Common";
+    ViewData["Title"] = "Register";
+}
+
+
+<!-- Register section -->
+
+    <section class="contact_section layout_padding">
+      <div class="custom_heading-container">
+        <h3 class=" ">
+          Register Now
+        </h3>
+      </div>
+      <div class="container layout_padding2-top">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <form asp-action="Register" asp-controller="User" method="post" enctype="multipart/form-data">
+              <div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Name" class="form-label">Name</label>
+                <input asp-for="Name" class="form-control"/>
+              </div>
+              <div>
+                <label asp-for="Nickname" class="form-label">Nickname</label>
+                <input asp-for="Nickname" class="form-control"/>
+              </div>
+              <div>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+                <label asp-for="Gender" class="form-label">Gender</label>
+                 <select asp-for="Gender" class="form-control">
+                      <option value="Female">Female</option>
+                      <option value="Male">Male</option>
+                 </select>
+              </div>
+              <div>
+                <span asp-validation-for="Age" class="text-danger"></span>
+                <label asp-for="Age" class="form-label">Age</label>
+                <input asp-for="Age" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="Country" class="text-danger"></span>
+                <label asp-for="Country" class="form-label">Country</label>
+                <input asp-for="Country" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="Password" class="form-label">Password</label>
+                <input type="password" asp-for="Password" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" asp-for="ConfirmPassword" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                <input type="PhoneNumber" asp-for="PhoneNumber" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="Avatar" class="text-danger"></span>
+                <label asp-for="Avatar" class="form-label">Avatar</label>
+                <input type="file" asp-for="Avatar" class="form-control" />
+              </div>
+              <div class="d-flex justify-content-center ">
+                <input type="submit" value="Register" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end register section -->
+
+    @section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

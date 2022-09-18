@@ -19,7 +19,7 @@ namespace Games_Library.Models
         public string Gender { get; set; }
 
         //profile picture
-        public string Avatar { get; set; } = @"/img/avatar.jpg";
+        public string Avatar { get; set; }
 
         [Required(ErrorMessage = "*")]
         [DataType(DataType.EmailAddress)]
