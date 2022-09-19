@@ -5,3 +5,5 @@ What is done until now:
 -Database
 -Home Page
 -Register/Login
+-sessions
+-profile page with user information
