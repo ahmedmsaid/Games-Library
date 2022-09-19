@@ -1,0 +1,38 @@
+﻿@model User
+@{
+    Layout = "_Common";
+}
+
+<div class="container rounded bg-white mt-5 mb-5">
+ <form asp-action="Update" asp-controller="User" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px" src="@Model.Avatar">
+                <span class="font-weight-bold">@Model.Nickname</span>
+                <span class="text-black-50">@Model.Email</span>
+                <span> </span>
+            </div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <input asp-for="Id" hidden/>
+                    <div class="col-md-6"><label asp-for="Name" class="labels">Name</label><input asp-for="Name" class="form-control"></div>
+                    <div class="col-md-6"><label asp-for="Nickname" class="labels">Nickname</label><input asp-for="Nickname" class="form-control"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label asp-for="Age" class="labels">Age</label><input asp-for="Age" class="form-control" ></div>
+                    <div class="col-md-12"><label asp-for="Country" class="labels">Country</label><input asp-for="Country" class="form-control" ></div>
+                    <div class="col-md-12"><label asp-for="PhoneNumber" class="labels">Phone Number</label><input type="PhoneNumber" asp-for="PhoneNumber" class="form-control" ></div>
+                    <div class="col-md-12"><label asp-for="Avatar" class="labels">Change Avatar</label><input type="file" asp-for="Avatar" class="form-control" /></div>
+                <div class="mt-5 text-center"><input class="btn btn-primary profile-button" type="submit" value="Save Profile" /></div>
+            </div>
+        </div>
+    </div>
+ </form>
+</div>
+

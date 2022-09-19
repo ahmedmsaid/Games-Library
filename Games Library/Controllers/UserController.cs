@@ -67,7 +67,67 @@ namespace Games_Library.Controllers
                 return View("Login", loginvm);
             }
             HttpContext.Session.SetInt32("UserId", user.Id);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Profile");
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
+        }
+
+        public IActionResult profile()
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login");
+            }
+            User currentUser = DbContext.Users.Where(u => u.Id == userId).SingleOrDefault();
+            currentUser.IsActive = true;
+            return View(currentUser);
+        }
+
+        public IActionResult Update(int id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Login");
+            }
+            User user = DbContext.Users.SingleOrDefault(c => c.Id == id);
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult Update(User user, IFormFile Avatar)
+        {
+            User OldUser = DbContext.Users.SingleOrDefault(c => c.Id == user.Id);
+
+            string check = $"wwwroot{OldUser.Avatar}";
+
+            string path = $"wwwroot/img/{Avatar.FileName}";
+
+            if (check != path) { 
+
+                 FileStream fs = new FileStream(path, FileMode.Create);
+
+                 Avatar.CopyTo(fs);
+
+                 user.Avatar = $"/img/{Avatar.FileName}";
+
+            }
+            
+
+            OldUser.Name = user.Name;
+            OldUser.Nickname = user.Nickname;
+            OldUser.Age = user.Age;
+            OldUser.Country = user.Country;
+            OldUser.PhoneNumber = user.PhoneNumber;
+            OldUser.Avatar = user.Avatar;
+
+            DbContext.SaveChanges();
+            return RedirectToAction("Profile");
         }
     }
 }

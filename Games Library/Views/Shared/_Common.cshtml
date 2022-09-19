@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+    int? userID = Context.Session.GetInt32("UserId");
 }
 
 <!DOCTYPE html>
@@ -25,6 +26,65 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet" />
     <link href="/css/responsive.css" rel="stylesheet" />
+
+    <style>::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1; 
+                                }
+                                 
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888; 
+                                }
+                                
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #555; 
+                                }
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}</style>
 </head>
 <body>
      <!-- header section strats -->
@@ -45,16 +105,28 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
-                                <li class="nav-item active">
-                 <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link " asp-area="" asp-controller="User" asp-action="Register">Register</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link " asp-area="" asp-controller="User" asp-action="Login">Login</a>
-                </li>
-                <li class="nav-item">
+                            @{if (userID == null)
+                            {
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                                    </li>
+                            }
+                            else{
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                                    </li>
+                            }
+                            }
+                            <li class="nav-item">
                   <a class="nav-link" href="contact.html">Contact us</a>
                 </li>
               </ul>

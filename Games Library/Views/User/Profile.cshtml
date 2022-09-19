@@ -1,0 +1,45 @@
+﻿@model User
+@{
+    ViewData["Title"] = "profile";
+    Layout = "_Common";
+}
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px" src="@Model.Avatar">
+                <span class="font-weight-bold">@Model.Nickname</span>
+                <span class="text-black-50">@Model.Email</span>
+                <span></span>
+                <button class="btn btn-link"><a href="/user/update/@Model.Id">Edit</a></button>
+            </div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Name</label><h6>@Model.Name</h6></div>
+                    <div class="col-md-6"><label class="labels">Nickname</label><h6>@Model.Nickname</h6></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Age </label><h6>@Model.Age</h6></div>
+                    <div class="col-md-12"><label class="labels">Gender </label><h6>@Model.Gender</h6></div>
+                    <div class="col-md-12"><label class="labels">Mobile Number </label><h6>@Model.PhoneNumber</h6></div>
+                    <div class="col-md-12"><label class="labels">Country </label><h6>@Model.Country</h6></div>
+                    <div class="col-md-12"><label class="labels">Email ID </label><h6>@Model.Email</h6></div>
+                </div>
+
+            </div>
+             <div class="col-md-4">
+             <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Friends</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+             </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
