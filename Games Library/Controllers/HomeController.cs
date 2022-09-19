@@ -1,27 +1,26 @@
 ﻿using Games_Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Games_Library.Models;
 
 namespace Games_Library.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        myDbContext DbContext;
+        public HomeController(ILogger<HomeController> logger, myDbContext DbContext)
         {
             _logger = logger;
+            this.DbContext = DbContext;
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<Game> games = DbContext.Games.ToList();
+            return View(games);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

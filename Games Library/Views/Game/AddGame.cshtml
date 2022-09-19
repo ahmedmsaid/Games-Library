@@ -1,0 +1,155 @@
+﻿@model Game
+@{
+   Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Games</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
+	<link href="/css/templatemo-style.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body> 
+
+	<div class="container">
+		     <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              Games Library
+            </span>
+          </a>
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                                    </li>
+
+                            <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+	<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="/img/game-bg.jpg">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" /> 
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Games Library</h1>
+								<h6 class="tm-site-description">Life beyond reality</h6>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <!-- Register section -->
+
+    <section class="contact_section layout_padding">
+      <div class="custom_heading-container">
+        <h3 class=" ">
+          Add Game Now
+        </h3>
+      </div>
+      <div class="container layout_padding2-top">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <form asp-action="AddGame" asp-controller="Game" method="post" enctype="multipart/form-data">
+              <div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Name" class="form-label">Name</label>
+                <input asp-for="Name" class="form-control"/>
+              </div>
+              <div>
+                <label asp-for="Publisher" class="form-label">Publisher</label>
+                <input asp-for="Publisher" class="form-control"/>
+              </div>
+              <div>
+                <span asp-validation-for="Genre" class="text-danger"></span>
+                <label asp-for="Genre" class="form-label">Genre</label>
+                <input asp-for="Genre" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+                <label asp-for="Price" class="form-label">Price</label>
+                <input asp-for="Price" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="Rate" class="text-danger"></span>
+                <label asp-for="Rate" class="form-label">Rate</label>
+                <input asp-for="Rate" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                <label asp-for="ReleaseDate" class="form-label">Release Date</label>
+                <input asp-for="ReleaseDate" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="Img" class="text-danger"></span>
+                <label asp-for="Img" class="form-label">Image</label>
+                <input type="file" asp-for="Img" class="form-control" />
+              </div>
+              <div class="d-flex justify-content-center ">
+                <input type="submit" value="Add Game" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end register section -->
+
+
+	</div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="js/jquery.min.js"></script>
+	<script src="js/parallax.min.js"></script>
+    
+</body>
+</html>

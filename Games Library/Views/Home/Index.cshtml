@@ -1,8 +1,25 @@
-﻿@{
+﻿@model List<Game>
+@{
     ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Gallery -->
+<h1 style="margin-top:20px;">Games in Library</h1><br />
+<div class="row tm-gallery">
+   <!-- gallery page 1 -->
+        @foreach(var item in Model){
+          <div class="card" style="width: 18rem;">
+             <img src="@item.Img" class="card-img-top" alt="@item.Name">
+             <div class="card-body">
+                  <h5 class="card-title">@item.Name</h5>
+                  <p class="card-text">
+                      Genre: @item.Genre<br/>
+                      Publisher: @item.Publisher<br />
+                      Price: @item.Price$<br />
+                      Rate : @item.Rate
+                  </p>
+                  <a href="/user/addgame/@item.Id" class="btn btn-primary">Add to library</a>
+             </div>
+          </div>
+        }
 </div>

@@ -117,7 +117,6 @@ namespace Games_Library.Controllers
                  user.Avatar = $"/img/{Avatar.FileName}";
 
             }
-            
 
             OldUser.Name = user.Name;
             OldUser.Nickname = user.Nickname;
@@ -125,6 +124,7 @@ namespace Games_Library.Controllers
             OldUser.Country = user.Country;
             OldUser.PhoneNumber = user.PhoneNumber;
             OldUser.Avatar = user.Avatar;
+            
 
             DbContext.SaveChanges();
             return RedirectToAction("Profile");

@@ -16,3 +16,28 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.tm-gallery-item {
+    max-width: 280px;
+}
+
+.tm-gallery-img {
+    margin-bottom: 20px;
+}
+
+.tm-gallery-title {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #1A6692;
+    margin-bottom: 15px;
+}
+
+.tm-gallery-description {
+    margin-bottom: 20px;
+}
+
+.tm-gallery-price {
+    font-size: 1.25rem;
+    color: #2F956D;
+    margin-bottom: 60px;
+}
