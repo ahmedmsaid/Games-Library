@@ -1,5 +1,5 @@
 # Games Library
-##Database is still being modified
+## Database is still being modified
 Under development project
 > I do not own most of the UI it is just from free templates
 What is done until now:
