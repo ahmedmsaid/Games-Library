@@ -8,6 +8,7 @@ What is done until now:
 -Register/Login
 -sessions
 -profile page with user information
+-user can edit his information
 -Adding Games to system
 -showing games in system
 -user can add games to his library and they will appear in library
