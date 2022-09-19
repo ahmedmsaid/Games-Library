@@ -1,17 +1,18 @@
-﻿@model User
+﻿@model UserGameProfileVM
 @{
     ViewData["Title"] = "profile";
     Layout = "_Common";
+    int? userID = Context.Session.GetInt32("UserId");
 }
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="rounded-circle mt-5" width="150px" src="@Model.Avatar">
-                <span class="font-weight-bold">@Model.Nickname</span>
-                <span class="text-black-50">@Model.Email</span>
+                <img class="rounded-circle mt-5" width="150px" src="@Model.User.Avatar">
+                <span class="font-weight-bold">@Model.User.Nickname</span>
+                <span class="text-black-50">@Model.User.Email</span>
                 <span></span>
-                <button class="btn btn-link"><a href="/user/update/@Model.Id">Edit</a></button>
+                <button class="btn btn-link"><a href="/user/update/@Model.User.Id">Edit</a></button>
             </div>
         </div>
         <div class="col-md-5 border-right">
@@ -20,15 +21,15 @@
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><h6>@Model.Name</h6></div>
-                    <div class="col-md-6"><label class="labels">Nickname</label><h6>@Model.Nickname</h6></div>
+                    <div class="col-md-6"><label class="labels">Name</label><h6>@Model.User.Name</h6></div>
+                    <div class="col-md-6"><label class="labels">Nickname</label><h6>@Model.User.Nickname</h6></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Age </label><h6>@Model.Age</h6></div>
-                    <div class="col-md-12"><label class="labels">Gender </label><h6>@Model.Gender</h6></div>
-                    <div class="col-md-12"><label class="labels">Mobile Number </label><h6>@Model.PhoneNumber</h6></div>
-                    <div class="col-md-12"><label class="labels">Country </label><h6>@Model.Country</h6></div>
-                    <div class="col-md-12"><label class="labels">Email ID </label><h6>@Model.Email</h6></div>
+                    <div class="col-md-12"><label class="labels">Age </label><h6>@Model.User.Age</h6></div>
+                    <div class="col-md-12"><label class="labels">Gender </label><h6>@Model.User.Gender</h6></div>
+                    <div class="col-md-12"><label class="labels">Mobile Number </label><h6>@Model.User.PhoneNumber</h6></div>
+                    <div class="col-md-12"><label class="labels">Country </label><h6>@Model.User.Country</h6></div>
+                    <div class="col-md-12"><label class="labels">Email ID </label><h6>@Model.User.Email</h6></div>
                 </div>
 
             </div>
@@ -42,7 +43,29 @@
         </div>
     </div>
 </div>
-</div>
+<!-- Gallery -->
+<h1 style="margin-top:20px;">Games in Library</h1><br />
+<div class="row tm-gallery">
+   <!-- gallery page 1 -->
+        @foreach(var item in Model.Games){
+            foreach (var userGame in Model.userGames)
+            {
+              if(userGame.UserId == userID && userGame.GameId == item.Id){  
+                 <div class="card" style="width: 18rem;">
+                  <img src="@item.Img" class="card-img-top" alt="@item.Name">
+                     <div class="card-body">
+                       <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">
+                              Genre: @item.Genre<br/>
+                              Publisher: @item.Publisher<br />
+                              Price: @item.Price$<br />
+                              Rate : @item.Rate
+                        </p>
+                    </div>
+                 </div>
+            }
+             }
+        }
 </div>
 
 

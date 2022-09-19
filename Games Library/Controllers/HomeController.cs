@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Games_Library.Models;
+using Games_Library.ViewModel;
 
 namespace Games_Library.Controllers
 {
@@ -17,8 +18,11 @@ namespace Games_Library.Controllers
 
         public IActionResult Index()
         {
-            List<Game> games = DbContext.Games.ToList();
-            return View(games);
+            UserGameVM vm = new UserGameVM();
+            vm.Users = DbContext.Users.ToList();
+            vm.Games = DbContext.Games.ToList();
+
+            return View(vm);
         }
 
 

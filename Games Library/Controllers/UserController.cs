@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Games_Library.Models;
 using Games_Library.ViewModel;
+using Microsoft.EntityFrameworkCore;
+
 namespace Games_Library.Controllers
 {
     public class UserController : Controller
@@ -83,9 +85,13 @@ namespace Games_Library.Controllers
             {
                 return RedirectToAction("Login");
             }
+            UserGameProfileVM vm = new UserGameProfileVM();
             User currentUser = DbContext.Users.Where(u => u.Id == userId).SingleOrDefault();
             currentUser.IsActive = true;
-            return View(currentUser);
+            vm.User = currentUser;
+            vm.Games = DbContext.Games.ToList();
+            vm.userGames = DbContext.UserGames.ToList();
+            return View(vm);
         }
 
         public IActionResult Update(int id)

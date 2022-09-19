@@ -44,7 +44,7 @@ namespace Games_Library.Models
         //Navigation Properties
         public SysReq? SysReq { get; set; }
 
-        public List<User>? Players { get; set; }
+        public List<UserGame>? UserGames { get; set; }
 
         public List<Review>? Reviews { get; set; }
 

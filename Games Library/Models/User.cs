@@ -54,7 +54,7 @@ namespace Games_Library.Models
         public int? ReviewId { get; set; }
 
         //Navigation properties
-        public List<Game>? Games { get; set; }
+        public List<UserGame>? UserGames { get; set; }
         public List<Review>? Reviews { get; set; }
 
     }

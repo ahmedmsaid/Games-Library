@@ -1,4 +1,4 @@
-﻿@model List<Game>
+﻿@model UserGameVM
 @{
     ViewData["Title"] = "Home";
 }
@@ -7,7 +7,7 @@
 <h1 style="margin-top:20px;">Games in Library</h1><br />
 <div class="row tm-gallery">
    <!-- gallery page 1 -->
-        @foreach(var item in Model){
+        @foreach(var item in Model.Games){
           <div class="card" style="width: 18rem;">
              <img src="@item.Img" class="card-img-top" alt="@item.Name">
              <div class="card-body">
@@ -18,7 +18,7 @@
                       Price: @item.Price$<br />
                       Rate : @item.Rate
                   </p>
-                  <a href="/user/addgame/@item.Id" class="btn btn-primary">Add to library</a>
+                  <a href="/usergames/AddUserGames/@item.Id" class="btn btn-primary">Add to library</a>
              </div>
           </div>
         }
