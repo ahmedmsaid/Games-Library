@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Games_Library.Models;
+﻿using Games_Library.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Games_Library.Controllers
 {
@@ -20,7 +20,7 @@ namespace Games_Library.Controllers
 		{
 			int? userId = HttpContext.Session.GetInt32("UserId");
 
-			if(userId == null)
+			if (userId == null)
 			{
 				return RedirectToAction("Login", "User");
 			}

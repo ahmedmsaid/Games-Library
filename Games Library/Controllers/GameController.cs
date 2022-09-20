@@ -47,7 +47,7 @@ namespace Games_Library.Controllers
             DbContext.Games.Add(game);
             DbContext.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Profile", "User");
         }
     }
 }

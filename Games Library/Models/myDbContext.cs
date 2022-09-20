@@ -8,7 +8,7 @@ namespace Games_Library.Models
         public DbSet<Game> Games { get; set; }
         public DbSet<Review> Reviews { get; set; }
 		public DbSet<UserGame> UserGames { get; set; }
-		//public DbSet<SysReq> SysReqs { get; set; }
+        public DbSet<SysReq> SysReqs { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

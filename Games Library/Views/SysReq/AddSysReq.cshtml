@@ -1,0 +1,47 @@
+﻿@model GameSysReq
+@{
+    Layout = "_Common";
+}
+
+      <form asp-action="Add" asp-controller="SysReq" method="post">
+              <h3>System Requierements</h3>
+              <div>
+                <span asp-validation-for="SysReq.OS" class="text-danger"></span>
+                <label asp-for="SysReq.OS" class="form-label">Operating System</label>
+                <input asp-for="SysReq.OS" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="SysReq.Processor" class="text-danger"></span>
+                <label asp-for="SysReq.Processor" class="form-label">Processor</label>
+                <input asp-for="SysReq.Processor" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="SysReq.Graphic" class="text-danger"></span>
+                <label asp-for="SysReq.Graphic" class="form-label">Graphics</label>
+                <input asp-for="SysReq.Graphic" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="SysReq.Memory" class="text-danger"></span>
+                <label asp-for="SysReq.Memory" class="form-label">Memory</label>
+                <input asp-for="SysReq.Memory" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="SysReq.DirectX" class="text-danger"></span>
+                <label asp-for="SysReq.DirectX" class="form-label">DirectX</label>
+                <input asp-for="SysReq.DirectX" class="form-control" />
+              </div>
+              <div>
+                <span asp-validation-for="SysReq.Storage" class="text-danger"></span>
+                <label asp-for="SysReq.Storage" class="form-label">Storage</label>
+                <input asp-for="SysReq.Storage" class="form-control" />
+              </div>
+              <div class="d-flex justify-content-center ">
+                <input type="submit" value="Add Game" />
+              </div>
+            </form>
+            
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="js/jquery.min.js"></script>
+	<script src="js/parallax.min.js"></script>

@@ -1,7 +1,9 @@
-﻿@model Game
+﻿@model ReviewGameVM
 @{
-   Layout = null;
+    Layout = null;
+    int? userID = Context.Session.GetInt32("UserId");
 }
+
 <!DOCTYPE html>
 <html>
 
@@ -69,90 +71,56 @@
     <!-- end header section -->
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
-		<div class="placeholder">
-			<div class="parallax-window" data-parallax="scroll" data-image-src="/img/game-bg.jpg">
+	<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="@Model.Game.Img">
 				<div class="tm-header">
 					<div class="row tm-header-inner">
 						<div class="col-md-6 col-12">
 							<img src="/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" /> 
 							<div class="tm-site-text-box">
-								<h1 class="tm-site-title">Games Library</h1>
-								<h6 class="tm-site-description">Life beyond reality</h6>	
+								<h1 class="tm-site-title">@Model.Game.Name</h1>
+								<h6 class="tm-site-description">@Model.Game.ReleaseDate</h6>	
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+    </div>
+    <h1 style="margin-top:20px;">Games in Library</h1><br />
+    <div class="row tm-gallery">
+   <!-- gallery page 1 -->
+        @foreach(var item in Model.Reviews){
+                 <div class="card" style="width: 18rem;">
+                  <img src="@Model.User.Avatar" class="card-img-top" alt="user profile">
+                     <div class="card-body">
+                       <h5 class="card-title">@item.Hours Played</h5>
+                        <p class="card-text">
+                            @item.Body
+                        </p>
+                    </div>
+                 </div>
+        }
 
-        <!-- Register section -->
-
-    <section class="contact_section layout_padding">
-      <div class="custom_heading-container">
-        <h3 class=" ">
-          Add Game Now
-        </h3>
-      </div>
-      <div class="container layout_padding2-top">
-        <div class="row">
-          <div class="col-md-6 mx-auto">
-            <form asp-action="AddGame" asp-controller="Game" method="post" enctype="multipart/form-data">
+    </div>
+      <form asp-action="AddReview" asp-controller="Review" method="post" >
+              <input asp-for="UserId" class="form-control" value="@userID" hidden />
+              <input asp-for="GameId" class="form-control" value="@Model.GameId" hidden />
               <div>
-                <span asp-validation-for="Name" class="text-danger"></span>
-                <label asp-for="Name" class="form-label">Name</label>
-                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Review.Hours" class="text-danger"></span>
+                <label asp-for="Review.Hours" class="form-label">Hours Played</label>
+                <input asp-for="Review.Hours" class="form-control"/>
               </div>
               <div>
-                <label asp-for="Publisher" class="form-label">Publisher</label>
-                <input asp-for="Publisher" class="form-control"/>
+                <label asp-for="Review.Body" class="form-label">Write Your Review</label>
+                <input asp-for="Review.Body" class="form-control"/>
               </div>
-              <div>
-                <span asp-validation-for="Genre" class="text-danger"></span>
-                <label asp-for="Genre" class="form-label">Genre</label>
-                <input asp-for="Genre" class="form-control" />
-              </div>
-              <div>
-                <span asp-validation-for="Price" class="text-danger"></span>
-                <label asp-for="Price" class="form-label">Price</label>
-                <input asp-for="Price" class="form-control" />
-              </div>
-              <div>
-                <span asp-validation-for="Rate" class="text-danger"></span>
-                <label asp-for="Rate" class="form-label">Rate</label>
-                <input asp-for="Rate" class="form-control" />
-              </div>
-              <div>
-                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
-                <label asp-for="ReleaseDate" class="form-label">Release Date</label>
-                <input asp-for="ReleaseDate" class="form-control" />
-              </div>
-              <div>
-                <span asp-validation-for="Img" class="text-danger"></span>
-                <label asp-for="Img" class="form-label">Image</label>
-                <input type="file" asp-for="Img" class="form-control" />
-              </div>
-              <div class="d-flex justify-content-center ">
-                <input type="submit" value="Add Game" />
-              </div>
-              <div>
-              </div>
-            </form>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- end register section -->
-
-
-	</div>
-
+      </form>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="js/jquery.min.js"></script>
 	<script src="js/parallax.min.js"></script>
-    
 </body>
 </html>
