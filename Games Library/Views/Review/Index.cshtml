@@ -41,27 +41,33 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
-
-                                    <li class="nav-item">
-                                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Register">Register</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Login">Login</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
-                                    </li>
-
-                            <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact us</a>
-                </li>
+                @{if (userID == null)
+                            {
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                                        </li>
+                            }
+                            else{
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                                        </li>
+                                         <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="Game" asp-action="AddGame">Add Game</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-area="" asp-controller="User" asp-action="Profile">Profile</a>
+                                        </li>
+                            }
+                            }
               </ul>
             </div>
           </div>
@@ -71,6 +77,7 @@
     <!-- end header section -->
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
+        <div class="container">
 	<div class="placeholder">
 			<div class="parallax-window" data-parallax="scroll" data-image-src="@Model.Game.Img">
 				<div class="tm-header">
@@ -87,7 +94,7 @@
 			</div>
 		</div>
     </div>
-    <h1 style="margin-top:20px;">Reviews</h1><br />
+@*    <h1 style="margin-top:20px;">Reviews</h1><br />
     <div class="row tm-gallery">
    <!-- gallery page 1 -->
         @foreach(var item in Model.Reviews){
@@ -102,28 +109,68 @@
                  </div>
         }
 
-    </div>
-    <h4>Add Your Review</h4>
-    <div>
-      <form asp-action="AddReview" asp-controller="Review" method="post" >
-              <input asp-for="UserId" class="form-control" value="@userID" hidden />
-              <input asp-for="GameId" class="form-control" value="@Model.GameId" hidden />
-              <div>
-                <span asp-validation-for="Review.Hours" class="text-danger"></span>
-                <label asp-for="Review.Hours" class="form-label">Hours Played</label>
-                <input asp-for="Review.Hours" class="form-control"/>
+    </div>*@
+    <main>
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Reviews about the game</h2>
+			</header>
+
+			<div class="tm-container-inner tm-persons">
+				<div class="row">
+                    @foreach(var item in Model.Reviews){
+                    if(Model.GameId == item.GameId){
+					<article class="col-lg-6">
+						<figure class="tm-person">
+							<img src="@Model.User.Avatar" alt="Image" class="img-fluid tm-person-img" />
+							<figcaption class="tm-person-description">
+								<h4 class="tm-person-name">@Model.User.Nickname</h4>
+								<p class="tm-person-title">@Model.User.Name</p>
+								<p class="tm-person-about">@item.Body</p>
+                                <p>Hours Played: @item.Hours</p>
+							</figcaption>
+						</figure>
+					</article>
+                    }
+                    }
+                </div>
+            </div>
+    </main>
+    <h4 class="col-12 text-center tm-section-title">Add Your Review</h4>
+    <div class="tm-container-inner-2 tm-contact-section">
+		<div class="row">
+			<div class="col-md-6">
+              <div class="tm-contact-form">
+                <form asp-action="AddReview" asp-controller="Review" method="post"  >
+                     <input asp-for="UserId" class="form-control" value="@userID" hidden />
+                     <input asp-for="GameId" class="form-control" value="@Model.GameId" hidden />
+              <div class="form-group">
+                    <span asp-validation-for="Review.Hours" class="text-danger"></span>
+                    <label asp-for="Review.Hours" class="form-label">Hours Played</label>
+                    <input asp-for="Review.Hours" class="form-control"/>
               </div>
-              <div>
-                <label asp-for="Review.Body" class="form-label">Write Your Review</label>
-                <input asp-for="Review.Body" class="form-control"/>
+              <div class="form-group">
+                    <label asp-for="Review.Body" class="form-label">Write Your Review</label>
+                    <input asp-for="Review.Body" class="form-control"/>
               </div>
               <input class="btn btn-primary" type="submit" value="submit" />
-      </form>
+                </form>
+              </div>
+            </div>
+        </div>
     </div>
+    </div>
+        <!-- footer section -->
+    <section class="container-fluid footer_section">
+      <p>
+        Copyright &copy; 2022 All Rights Reserved By
+        <a href="https://github.com/ahmedmsaid/Games-Library">Medjay Happy</a>
+      </p>
+    </section>
+    <!-- footer section -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-    <script src="js/jquery.min.js"></script>
-	<script src="js/parallax.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+	<script src="/js/parallax.min.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ namespace Games_Library.Controllers
             this.DbContext = DbContext;
         }
 
-        public IActionResult Index(int id = 1)
+        public IActionResult Index(int id)
         {
             int? userID = HttpContext.Session.GetInt32("UserId");
             ReviewGameVM vm = new ReviewGameVM();
