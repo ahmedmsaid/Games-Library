@@ -19,13 +19,16 @@ namespace Games_Library.Controllers
             vm.GameId = id;
             vm.User = DbContext.Users.SingleOrDefault(u => u.Id == userID);
             vm.Game = DbContext.Games.SingleOrDefault(g => g.Id == id);
+            vm.Reviews = DbContext.Reviews.ToList();
             return View(vm);
         }
 
         [HttpPost]
         public IActionResult AddReview(ReviewGameVM reviewgame)
         {
-            Review review = reviewgame.Review;
+           
+           Review review = reviewgame.Review;
+
             review.UserId = reviewgame.UserId;
             review.GameId = reviewgame.GameId;
 

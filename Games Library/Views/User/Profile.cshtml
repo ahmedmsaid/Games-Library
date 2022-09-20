@@ -34,13 +34,13 @@
 
             </div>
         </div>
-        <div class="col-md-4">
+       @* <div class="col-md-4">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center experience"><span>Friends</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Add Friends</span></div><br>
                 <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
                 <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
             </div>
-        </div>
+        </div>*@
     </div>
 </div>
 <!-- Gallery -->
@@ -54,7 +54,7 @@
                  <div class="card" style="width: 18rem;">
                   <img src="@item.Img" class="card-img-top" alt="@item.Name">
                      <div class="card-body">
-                       <h5 class="card-title">@item.Name</h5>
+                       <a href="/review/index/@item.Id"><h5 class="card-title">@item.Name</h5></a>
                         <p class="card-text">
                               Genre: @item.Genre<br/>
                               Publisher: @item.Publisher<br />

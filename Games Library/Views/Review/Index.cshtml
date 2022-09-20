@@ -87,7 +87,7 @@
 			</div>
 		</div>
     </div>
-    <h1 style="margin-top:20px;">Games in Library</h1><br />
+    <h1 style="margin-top:20px;">Reviews</h1><br />
     <div class="row tm-gallery">
    <!-- gallery page 1 -->
         @foreach(var item in Model.Reviews){
@@ -103,6 +103,8 @@
         }
 
     </div>
+    <h4>Add Your Review</h4>
+    <div>
       <form asp-action="AddReview" asp-controller="Review" method="post" >
               <input asp-for="UserId" class="form-control" value="@userID" hidden />
               <input asp-for="GameId" class="form-control" value="@Model.GameId" hidden />
@@ -115,8 +117,9 @@
                 <label asp-for="Review.Body" class="form-label">Write Your Review</label>
                 <input asp-for="Review.Body" class="form-control"/>
               </div>
+              <input class="btn btn-primary" type="submit" value="submit" />
       </form>
-    
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
