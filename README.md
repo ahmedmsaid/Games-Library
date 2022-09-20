@@ -10,3 +10,5 @@ What is done until now:
 - Adding Games to system
 - showing games in system
 - user can add games to his library and they will appear in library
+-Reviews on game added
+-users can review games
